@@ -1,8 +1,8 @@
 `include "sw.vh"
 
-module isbm(in_cmd, out_cmd, re, empty, reqi, req_out, ack, clk, rst);
+module isbm(cmd, re, empty, reqi, req_out, ack, clk, rst);
   input clk, rst, empty, ack;
-  input [1:0] in_cmd, out_cmd;
+  input [1:0] cmd;
   input [`PORT:0] reqi;
   output re;
   reg [`PORT:0] req;
@@ -27,12 +27,12 @@ module isbm(in_cmd, out_cmd, re, empty, reqi, req_out, ack, clk, rst);
       mode <= MODE_WAIT_HEAD;
       req <= 0;
     end else begin
-      if (mode == MODE_WAIT_HEAD && out_cmd == CMD_HEAD) begin
+      if (mode == MODE_WAIT_HEAD && cmd == CMD_HEAD) begin
         mode <= MODE_WAIT_ACK;
         req <= reqi;
       end else if (mode == MODE_WAIT_ACK && ack) begin
         mode <= MODE_WAIT_TAIL;
-      end else if (mode == MODE_WAIT_TAIL && out_cmd == CMD_TAIL) begin
+      end else if (mode == MODE_WAIT_TAIL && cmd == CMD_TAIL) begin
         mode <= MODE_WAIT_HEAD;
         req <= 0;
       end else begin

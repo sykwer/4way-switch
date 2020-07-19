@@ -1,7 +1,11 @@
 `include "sw.vh"
-module sw(input [`PKTW:0] i0, i1, i2, i3, output [`PKTW:0] o0, o1, o2, o3, input clk, rst);
-	logic [`PKTW:0] co0, co1, co2, co3; // packet outputs from ib
-	logic [`PORT:0] req0, req1, req2, req3; // request outputs from ib
+module sw(i0, i1, i2, i3, o0, o1, o2, o3, clk, rst);
+  input clk, rst;
+  input [`PKTW:0] i0, i1, i2, i3;
+  output [`PKTW:0] o0, o1, o2, o3;
+
+	wire [`PKTW:0] co0, co1, co2, co3; // packet outputs from ib
+	wire [`PORT:0] req0, req1, req2, req3; // request outputs from ib
 
   // Input Buffers
 	ib ib0(i0, co0, req0, ack0, full0, clk, rst);
