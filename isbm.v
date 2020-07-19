@@ -1,14 +1,13 @@
 `include "sw.vh"
 
-module isbm(in_cmd, out_cmd, re, empty, reqi, req_out, ack, clk, rst, mode);
+module isbm(in_cmd, out_cmd, re, empty, reqi, req_out, ack, clk, rst);
   input clk, rst, empty, ack;
   input [1:0] in_cmd, out_cmd;
   input [`PORT:0] reqi;
   output re;
   reg [`PORT:0] req;
 
-  output reg [1:0] mode;
-
+  reg [1:0] mode;
 
   localparam MODE_WAIT_HEAD = 2'b00;
   localparam MODE_WAIT_ACK = 2'b01;

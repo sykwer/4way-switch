@@ -3,15 +3,7 @@ module swtest;
 	logic [`PKTW:0] i0, i1, i2, i3;
 	logic [`PKTW:0] o0, o1, o2, o3;
 	logic clk, rst;
-  logic ack0, ack1, ack2, ack3;
-  logic [`PORT:0] req0, req1, req2, req3;
-  logic we0, we1, we2, we3;
-  logic [3:0] reqi0, reqi1, reqi2, reqi3;
-  logic [1:0] mode0, mode1, mode2, mode3;
-  logic [1:0] cmd0, cmd1, cmd2, cmd3;
-  logic [2:0] ackreg0, ackreg1, ackreg2, ackreg3;
-  logic [3:0] lead0, lead1,lead2, lead3;
-	sw sw(i0, i1, i2, i3, o0, o1, o2, o3, ack0, ack1, ack2, ack3, req0, req1, req2, req3, we0, we1, we2, we3, reqi0, reqi1, reqi2, reqi3, mode0, mode1, mode2, mode3, cmd0, cmd1, cmd2, cmd3, ackreg0, ackreg1, ackreg2, ackreg3, lead0, lead1, lead2, lead3, clk, rst);
+	sw sw(i0, i1, i2, i3, o0, o1, o2, o3, clk, rst);
 	always #5 clk = ~clk;
 initial begin
 $dumpfile("sw.vcd");
